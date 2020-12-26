@@ -14,9 +14,9 @@ const { User } = require("./models/User");
 app.use(bodyParser.urlencoded({extended:true}));
 //application/json
 app.use(bodyParser.json());
-
+const config = require('./config/key');
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://munyeong:ansdud123@base.slzu7.mongodb.net/<dbname>?retryWrites=true&w=majority',{
+mongoose.connect(config.mongoURI,{
     useNewUrlParser : true, useUnifiedTopology: true, useCreateIndex : true, useFindAndModify:false
 }).then(() => console.log('MongoDb connect...'))
 .catch(err => console.log(err))
